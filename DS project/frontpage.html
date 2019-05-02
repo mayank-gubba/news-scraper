@@ -1,25 +1,24 @@
+<!DOCTYPE html>
 <html>
-<head><title>Reading values into a table</title></head>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+window.onload=function(){ with (new XMLHttpRequest()) {
+  onreadystatechange=cb; open('GET','csv.txt',true); responseType='text';send();
+}}
+function cb(){if(this.readyState===4)document.getElementById('main')
+                                             .innerHTML=tbl(this.responseText); }
+function tbl(csv){ // do whatever is necessary to create your table here ...
+ return csv.split('\n')
+           .map(function(tr,i){return '<tr><td>'
+                                     +tr.replace(/\t/g,'</td><td>')
+                                     +'</td></tr>';})
+           .join('\n'); }
+</script>
+</head>
 <body>
-
-<table datasrc='#data'>
-
-  <thead>
-     <tr><th>headline</th><th>link</th></tr>
-  </thead>
-
-  <tbody> <tr>
-     <td><span datafld='headline'> </span></td>
-     <td><span datafld='link'></span></td>
-  </tbody>
-
-</table>
-
-
-<object ID=data classid="hhh">
-  <param nAme="DataURL" value="indiatoday.csv">
-  <param nAme="UseHeader" value="true">
-</object>
-
+<h2>Hey, this is my fabulous "dynamic" html page!</h2>
+<table id="main"></table>
 </body>
 </html>

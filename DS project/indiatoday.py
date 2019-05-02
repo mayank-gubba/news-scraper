@@ -12,13 +12,16 @@ soup = BeautifulSoup(source, 'lxml')
 
 trending=soup.find('div', class_='col-sm-4 col-md-4 col-lg-3 home-top-story')
 
+i=0
 for top in trending.find('ul', class_='itg-listing'):
-
-
-    news=top.find('a')['title']
-    print(news)
-    link=top.find('a')['href']
-    print(link)
-    csv_writer.writerow([news,link])
-
+    if i<3:
+        news=top.find('a')['title']
+        print(news)
+        link=top.find('a')['href']
+        flink=f'https://www.indiatoday.in{link}'
+        print(flink)
+        csv_writer.writerow([news,flink])
+    else:
+        break
+    i=i+1
 csv_file.close()
