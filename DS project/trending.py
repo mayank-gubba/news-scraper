@@ -6,6 +6,7 @@ source1 = requests.get('https://www.indiatoday.in/').text
 
 csv_file= open('trending.csv','w')
 csv_writer=csv.writer(csv_file)
+csv_writer.writerow(['headline','news_link'])
 
 soup1 = BeautifulSoup(source1, 'lxml')
 
