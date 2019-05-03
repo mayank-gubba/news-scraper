@@ -19,17 +19,18 @@ link=top1.find('a')['href']
 print(link)
 csv_writer.writerow([news,link])
 
-#espn
-source2 = requests.get('http://www.espn.in/').text
+#TOI
+source2 = requests.get('https://timesofindia.indiatimes.com/sports').text
 
 soup2 = BeautifulSoup(source2, 'lxml')
 
-trending2=soup2.find('div',class_='headlineStack')
-top2=trending2.find('ul',class_='headlineStack__list')
-head=top2.find('a').text
+trending2=soup2.find('div',class_='top-newslist small')
+top2=trending2.find('ul',class_='cvs_wdt clearfix')
+side2=top2.find('span',class_='w_tle')
+head=side2.find('a').text
 print(head)
-news_link=top2.find('a')['href']
-news_link_f=f'http://www.espn.in{news_link}'
+news_link=side2.find('a')['href']
+news_link_f=f'https://timesofindia.indiatimes.com{news_link}'
 print(news_link_f)
 csv_writer.writerow([head,news_link_f])
 
