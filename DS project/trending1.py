@@ -4,7 +4,7 @@ import csv
 
 source1 = requests.get('https://www.indiatoday.in/').text
 
-csv_file= open('trending.csv','w')
+csv_file= open('trending1.csv','w')
 csv_writer=csv.writer(csv_file)
 
 soup1 = BeautifulSoup(source1, 'lxml')
@@ -19,7 +19,7 @@ for top in trending1.find('ul', class_='itg-listing'):
         link=top.find('a')['href']
         flink=f'https://www.indiatoday.in{link}'
         print(flink)
-        csv_writer.writerow([news,flink])
+        csv_writer.writerow([news])
     else:
         break
     i=i+1
@@ -37,7 +37,7 @@ for top in trending2.find('ul'):
         print(link)
         headline=top.find('div',class_='description').text
         print(headline)
-        csv_writer.writerow([headline,link])
+        csv_writer.writerow([headline])
     else:
         break
     i=i+1
