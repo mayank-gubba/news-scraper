@@ -27,10 +27,10 @@ topic2=trending2.find('div',class_='blog-list-blog')
 
 side=topic2.find('p')
 
-head2=side.find('a')['href']
-print(head2)
-link2=side.find('a').text
+link2=side.find('a')['href']
 print(link2)
+head2=side.find('a').text
+print(head2)
 csv_writer.writerow([head2,link2])
 #link3
 
